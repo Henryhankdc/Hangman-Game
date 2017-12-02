@@ -14,28 +14,47 @@
       return document.getElementById('user-text').innerHTML = place;
       // return 
     }
+
+    var solution = 'party';
 // userTypes();
 
 // reference
+
 // for (var i = 0; i < drinkList.length; i++) {
 //   var newItem = document.createElement('li');
 //     newItem.innerHTML = drinkList[i];
 //     newList.appendChild(newItem);
 //   }
 
+// var newDiv = document.createElement("div");
+// newDiv.innerHTML = "A pleasure to meet you!";
+
+// targetDiv.appendChild(newDiv);
+
+// // We then apply that CSS to our newDiv.
+// newDiv.setAttribute("class", "fancy");
+
 
 // 2. If the user presses a key that matches the letter appears under hangman
 
 // targert answer UL
-var revealList = document.getElementsById('answer');
+var revealList = document.getElementsByClassName('match');
+
+// PUT answer into a variable
+// check to see if typed key matches and letters in answer
+// If is pop out the letter from the answer variable (array?)
+// put array variable on the the screen to show user guess is correct
+
+// revealList.setAttribute('class', 'party');
 
 // add class to list item
-var newItem = document.createElement('li');
+// var newItem = document.createElement('li');
 
-    function correctGuess() {
+
+//     function correctGuess() {
    
-    }
-    correctGuess();
+//     }
+//     correctGuess();
 
 
 
