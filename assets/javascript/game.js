@@ -24,22 +24,32 @@
     var chooseWord = solution[Math.floor(Math.random() * solution.length)];
 
   // Other Variables
+    var empty;
     var count = 0;
     var answers = chosenLetters;
-    
+    var answerUnderscore = [];
+    var guessList = document.getElementById('answer');
+    var answerContainer = document.getElementById('solution-container')
 
 // userTypes();
 
 
 function startGame() {
-  // for (var i = 0; i < drinkList.length; i++) {
-//   var newItem = document.createElement('li');
-//     newItem.innerHTML = drinkList[i];
-//     newList.appendChild(newItem);
-//   }
+  var newList = document.createElement('ul');
+  answerContainer.appendChild(newList);
+  newList.setAttribute('id', 'solution-list');  
+
+  for (var i = 0; i < chooseWord.length; i++) {
+    var solutionItem = document.createElement('li');
+    answerUnderscore[i]
+     solutionItem.innerHTML = answerUnderscore;
+     newList.appendChild(solutionItem);
+    
+  }
 
 
 }
+startGame();
 
 // reference
 
@@ -61,7 +71,7 @@ function startGame() {
 // 2. If the user presses a key that matches the letter appears under hangman
 
 // targert answer UL
-var revealList = document.getElementById('answer');
+
 
 // PUT answer into a variable
 // check to see if typed key matches and letters in answer

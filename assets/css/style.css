@@ -1,13 +1,14 @@
-
-.answer {
+#solution-list {
+    font-size:22px;
+    font-weight: bold;
+    margin:20px 0;
+    padding:20px 0;
     list-style-type: none;
     display:flex;
 }
 
-.answer li {
-    border-bottom:1px solid black;
-}
-
-.match {
-display:none;
+#solution-list li {
+    margin:0 10px;
+    padding:0 10px;
+    border-bottom:2px solid black;
 }
