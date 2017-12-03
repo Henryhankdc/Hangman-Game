@@ -1,22 +1,45 @@
 
 // // 1. After user presses key, the key pressed is added to a list of guesses
       // detect key press
-    document.addEventListener('keyup', userTypes);
+    // chosen letters
     var chosenLetters = [];
+    
+    document.addEventListener('keyup', userTypes);
 
-    function userTypes (event) {
+    function userTypes (event) {  
       var make = event.key;
       chosenLetters.push(make);
       console.log(make);
-
       var place = '<p>' + chosenLetters + '</p>';
-      
+    
       return document.getElementById('user-text').innerHTML = place;
       // return 
     }
+    
 
-    var solution = 'party';
+    // answers
+    var solution = ['party', 'dude', 'excellent', 'radical'];
+
+    // Pick random word
+    var chooseWord = solution[Math.floor(Math.random() * solution.length)];
+
+  // Other Variables
+    var count = 0;
+    var answers = chosenLetters;
+    
+
 // userTypes();
+
+
+function startGame() {
+  // for (var i = 0; i < drinkList.length; i++) {
+//   var newItem = document.createElement('li');
+//     newItem.innerHTML = drinkList[i];
+//     newList.appendChild(newItem);
+//   }
+
+
+}
 
 // reference
 
@@ -38,10 +61,19 @@
 // 2. If the user presses a key that matches the letter appears under hangman
 
 // targert answer UL
-var revealList = document.getElementsByClassName('match');
+var revealList = document.getElementById('answer');
 
 // PUT answer into a variable
 // check to see if typed key matches and letters in answer
+// var getChar = function(answer, chosenLetters){
+//   for(var i=0;i<string.length;i++)
+//   {
+//     if(string.charAt(i)==chosenLetters) console.log(i);
+//   }
+// }
+
+
+
 // If is pop out the letter from the answer variable (array?)
 // put array variable on the the screen to show user guess is correct
 
