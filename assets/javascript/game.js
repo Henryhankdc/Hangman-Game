@@ -1,22 +1,4 @@
-
-// // 1. After user presses key, the key pressed is added to a list of guesses
-      // detect key press
-    // chosen letters
-    var chosenLetters = [];
-    
-    document.addEventListener('keyup', userTypes);
-
-    function userTypes (event) {  
-      var make = event.key;
-      chosenLetters.push(make);
-      console.log(make);
-      var place = '<p>' + chosenLetters + '</p>';
-    
-      return document.getElementById('user-text').innerHTML = place;
-      // return 
-    }
-    
-
+    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     // answers
     var solution = ['party', 'dude', 'excellent', 'radical'];
 
@@ -26,10 +8,11 @@
   // Other Variables
     var empty;
     var count = 0;
-    var answers = chosenLetters;
+    // var answers = chosenLetters;
     var answerUnderscore = [];
     var guessList = document.getElementById('answer');
     var answerContainer = document.getElementById('solution-container')
+    var solutionContainer = document.getElementById('solution-container-words')
 
 // userTypes();
 
@@ -50,6 +33,57 @@ function startGame() {
 
 }
 startGame();
+
+// // 1. After user presses key, the key pressed is added to a list of guesses
+      // detect key press
+    // chosen letters
+    // empty array to hold typed letters that go on screen
+    var chosenLetters = [];
+    // empty array to hold correct typed choices
+    var correctChoices = [];
+    // number of turns based on word length
+    turnsTillWin = chooseWord.length;
+    turnsTillLost = chooseWord.length;
+    
+
+document.addEventListener('keyup', function(e) { //listen to the keyboard events
+// log guessed letters on screen
+  var make = event.key;
+  chosenLetters.push(make);
+ //  console.log(make);
+  var place = '<p>' + chosenLetters + '</p>';
+  document.getElementById('user-text').innerHTML = place;
+ 
+    if (chooseWord.indexOf(e.key) > -1) { //if clicked letter is included inside the words
+      var choice = alphabet.splice(alphabet.indexOf(e.key), 1);
+      // add correct choices to an array
+      correctChoices.push(choice);
+      console.log('correct letter');
+   
+        var makeAnswer = e.key;
+        var toScreen = correctChoices.join('');
+        document.getElementById('solution-container-words').innerHTML = toScreen;
+
+
+      turnsTillWin--;
+
+
+    } else {
+      // subtract turns
+      turnsTillLost--;
+      // alert('you have ' + turns + ' left');
+      console.log('incorrect letter');
+      
+    }
+    console.log(JSON.stringify(alphabet));
+     //show the alphabet and its actual state
+  
+});
+
+    
+  
+
+
 
 // reference
 
@@ -75,28 +109,7 @@ startGame();
 
 // PUT answer into a variable
 // check to see if typed key matches and letters in answer
-// var getChar = function(answer, chosenLetters){
-//   for(var i=0;i<string.length;i++)
-//   {
-//     if(string.charAt(i)==chosenLetters) console.log(i);
-//   }
-// }
 
-
-
-// If is pop out the letter from the answer variable (array?)
-// put array variable on the the screen to show user guess is correct
-
-// revealList.setAttribute('class', 'party');
-
-// add class to list item
-// var newItem = document.createElement('li');
-
-
-//     function correctGuess() {
-   
-//     }
-//     correctGuess();
 
 
 
