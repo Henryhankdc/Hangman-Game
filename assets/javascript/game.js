@@ -3,7 +3,8 @@
     // alphabet with extra letters
     var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     // answers
-    var solution = ['party', 'dude', 'excellent', 'radical', 'awesome', 'bummer', 'heinous'];
+    // var solution = ['party', 'dude', 'excellent', 'radical', 'awesome', 'bummer', 'heinous'];
+    var solution = ['party', 'dude'];
 
     // Pick random word
     var chooseWord = solution[Math.floor(Math.random() * solution.length)];
@@ -24,20 +25,22 @@
    var turnsTillLost = 7;
    var trys = 6;
    var trysTillWin = 0;
- 
+  //  var printSolutionWord;
+   var newList = document.createElement('ul');
     
 
 function startGame() {
   // Build out list of blank spaces for chosen word
 
   // create unordered list to hold chosen word
-  var newList = document.createElement('ul');
+ 
   answerContainer.appendChild(newList);
   newList.setAttribute('id', 'solution-list');  
 
   for (var i = 0; i < chooseWord.length; i++) {
 // Loop through chosen word to create list item underscors for hint word
     var solutionItem = document.createElement('li');
+    solutionItem.setAttribute('id', 'answer' + i); 
     answerUnderscore[i]
      solutionItem.innerHTML = answerUnderscore;
      newList.appendChild(solutionItem);
@@ -47,7 +50,7 @@ function startGame() {
 startGame();
 
 
-    
+
 
 document.addEventListener('keyup', function(e) { //listen to the keyboard events
 // log guessed letters on screen
@@ -55,19 +58,44 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
   chosenLetters.push(make);
   var place = '<p>' + chosenLetters + '</p>';
   document.getElementById('user-text').innerHTML = place;
- 
+  
     if (chooseWord.indexOf(e.key) > -1) { //if clicked letter is included inside the words
       var choice = alphabet.splice(alphabet.indexOf(e.key), 1);
+      var printThis = chooseWord.indexOf(e.key) + e.key;
+      
       // add correct choices to an array
       correctChoices.push(choice);
-      // console.log('correct letter');
+      
+
+      console.log('correct letter');
+      console.log(chooseWord.indexOf(e.key) + e.key);
+      
       // add words to screen
       var makeAnswer = e.key;
       var toScreen = correctChoices.join('');
       document.getElementById('solution-container-words').innerHTML = toScreen;
+      // console.log('answer' + chooseWord.indexOf(e.key));
+      // document.getElementById('answer0').innerHTML = 'HEY';
+     
+      
+
+      
+      document.getElementById('answer' + chooseWord.indexOf(e.key)).innerHTML = makeAnswer;
+      // for (var i = 0; i < chooseWord.length; i++) {
+      //   // var printTo = document.getElementsByClassName('answer'+ i);
+
+      //   if (i === printThis){
+      //   document.getElementsByClassName('answer'+ i).innerHTML = makeAnswer;
+      //   }
+      //   else{
+      //     return null;
+      //   }
+          
+      // }
 
       // reduce turns till win number
       turnsTillWin--;
+        
 
 
     } else {

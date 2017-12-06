@@ -53,6 +53,10 @@
     display:flex;
 }
 
+/* #solution-list li#answer0 {
+   border-bottom:10px solid blue;
+} */
+
 #solution-list li {
     margin:0 10px;
     padding:0 10px;
