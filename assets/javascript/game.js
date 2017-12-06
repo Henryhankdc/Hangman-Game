@@ -1,10 +1,8 @@
-    // Variables needed
 
-    // alphabet with extra letters
+    // alphabet with extra letters to reference guessed letters on keyboard.
     var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     // answers
-    // var solution = ['party', 'dude', 'excellent', 'radical', 'awesome', 'bummer', 'heinous'];
-    var solution = ['party', 'dude'];
+    var solution = ['party', 'dude', 'excellent', 'radical', 'awesome', 'bummer', 'heinous'];
 
     // Pick random word
     var chooseWord = solution[Math.floor(Math.random() * solution.length)];
@@ -72,31 +70,12 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
       
       // add words to screen
       var makeAnswer = e.key;
-      var toScreen = correctChoices.join('');
-      document.getElementById('solution-container-words').innerHTML = toScreen;
-      // console.log('answer' + chooseWord.indexOf(e.key));
-      // document.getElementById('answer0').innerHTML = 'HEY';
-     
-      
-
-      
+        // Add correctly Guessed words to LI to reveal word to User 
       document.getElementById('answer' + chooseWord.indexOf(e.key)).innerHTML = makeAnswer;
-      // for (var i = 0; i < chooseWord.length; i++) {
-      //   // var printTo = document.getElementsByClassName('answer'+ i);
-
-      //   if (i === printThis){
-      //   document.getElementsByClassName('answer'+ i).innerHTML = makeAnswer;
-      //   }
-      //   else{
-      //     return null;
-      //   }
-          
-      // }
+      
 
       // reduce turns till win number
       turnsTillWin--;
-        
-
 
     } else {
       // subtract turns till lost number
@@ -104,9 +83,9 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
       var addTrys = document.getElementById('guesses-left');
       addTrys.innerHTML = turnsTillLost - 1;
 
-      // add conditional logic to show hangman image based on wrong guesses
+      // add conditional logic to show hangman image based on wrong guesses. There is probably a "DRY"-er way of doing this, but enjoy....
         if (turnsTillLost === 6) {
-          // get Id and and attache new src to img tag
+          // get Id and and attach new src to img tag. wash, rinse, repeat.
             function addImage() {
               var addImage = document.getElementById('deadGuyContainer');
               var imageTag = document.getElementById('dead-guy')
@@ -164,10 +143,9 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
           addImage();
 
           function killGame() {
-            alert('you lose. You just killed a dude. bummer.  Try again?');
+            alert('YOU LOSE. You just killed a dude. Live with that. Try again?');
            return setTimeout(function(){location.reload()}, 2000);
-                
-                
+                       
           }
           killGame();
         }
@@ -176,13 +154,11 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
         }
 
       // console.log('incorrect letter');
-      // console.log(turnsTillLost);
-      
     }
-    console.log(JSON.stringify(alphabet));
+    // console.log(JSON.stringify(alphabet));
 
     function stopStart() {
-      
+      // Create a gif to show when user wins!
       if(turnsTillWin === trysTillWin ) {
 
          function award() {
@@ -191,12 +167,14 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
               
           }
           award();
+
+          // Prompt player to type yes to reload new random word and play again.
          function playAgain (){
-            var a = prompt('great work. want to play again?');
-            // prompt();
+            var a = prompt('great work. Type yes to play again.');
       
-            if (a === 'yes') {
+            if (a.toLowerCase() === 'yes') {
               // console.log('great');
+              // add delay before reload to next game;
               setTimeout(function(){location.reload()}, 5000);
             }
           }

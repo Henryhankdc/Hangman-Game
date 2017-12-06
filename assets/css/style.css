@@ -1,5 +1,4 @@
 
-
 #banner {
     background-image: url(../images/bill-and-ted-cover.jpg);
     background-size: cover;
@@ -53,9 +52,6 @@
     display:flex;
 }
 
-/* #solution-list li#answer0 {
-   border-bottom:10px solid blue;
-} */
 
 #solution-list li {
     margin:0 10px;
