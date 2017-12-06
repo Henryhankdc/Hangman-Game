@@ -1,6 +1,9 @@
+    // Variables needed
+
+    // alphabet with extra letters
     var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     // answers
-    var solution = ['party', 'dude', 'excellent', 'radical'];
+    var solution = ['party', 'dude', 'excellent', 'radical', 'awesome', 'bummer'];
 
     // Pick random word
     var chooseWord = solution[Math.floor(Math.random() * solution.length)];
@@ -8,36 +11,32 @@
   // Other Variables
     var empty;
     var count = 0;
-    // var answers = chosenLetters;
     var answerUnderscore = [];
     var guessList = document.getElementById('answer');
     var answerContainer = document.getElementById('solution-container')
     var solutionContainer = document.getElementById('solution-container-words')
-
-    // // 1. After user presses key, the key pressed is added to a list of guesses
-      // detect key press
-    // chosen letters
-    // empty array to hold typed letters that go on screen
+    // empty array to hold chosen letters
     var chosenLetters = [];
     // empty array to hold correct typed choices
     var correctChoices = [];
     // number of turns based on word length
-    turnsTillWin = chooseWord.length;
-    turnsTillLost = 6;
-    var trys = 6;
-    var trysTillWin = 0;
+   var turnsTillWin = chooseWord.length;
+   var turnsTillLost = 7;
+   var trys = 6;
+   var trysTillWin = 0;
  
     
 
 function startGame() {
-  
-  var newList = document.createElement('ul');
-  
+  // Build out list of blank spaces for chosen word
 
+  // create unordered list to hold chosen word
+  var newList = document.createElement('ul');
   answerContainer.appendChild(newList);
   newList.setAttribute('id', 'solution-list');  
 
   for (var i = 0; i < chooseWord.length; i++) {
+// Loop through chosen word to create list item underscors for hint word
     var solutionItem = document.createElement('li');
     answerUnderscore[i]
      solutionItem.innerHTML = answerUnderscore;
@@ -54,7 +53,6 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
 // log guessed letters on screen
   var make = event.key;
   chosenLetters.push(make);
- //  console.log(make);
   var place = '<p>' + chosenLetters + '</p>';
   document.getElementById('user-text').innerHTML = place;
  
@@ -62,23 +60,25 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
       var choice = alphabet.splice(alphabet.indexOf(e.key), 1);
       // add correct choices to an array
       correctChoices.push(choice);
-      console.log('correct letter');
-   
-        var makeAnswer = e.key;
-        var toScreen = correctChoices.join('');
-        document.getElementById('solution-container-words').innerHTML = toScreen;
+      // console.log('correct letter');
+      // add words to screen
+      var makeAnswer = e.key;
+      var toScreen = correctChoices.join('');
+      document.getElementById('solution-container-words').innerHTML = toScreen;
 
-
+      // reduce turns till win number
       turnsTillWin--;
 
 
     } else {
-      // subtract turns
+      // subtract turns till lost number
       turnsTillLost--;
       var addTrys = document.getElementById('guesses-left');
       addTrys.innerHTML = turnsTillLost - 1;
 
+      // add conditional logic to show hangman image based on wrong guesses
         if (turnsTillLost === 6) {
+          // get Id and and attache new src to img tag
             function addImage() {
               var addImage = document.getElementById('deadGuyContainer');
               var imageTag = document.getElementById('dead-guy')
@@ -137,8 +137,8 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
 
           function killGame() {
             alert('you lose. You just killed a dude. bummer.  Try again?');
-           
-                return location.reload(true);
+           return setTimeout(function(){location.reload()}, 2000);
+                
                 
           }
           killGame();
@@ -147,8 +147,8 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
           return null;
         }
 
-      console.log('incorrect letter');
-      console.log(turnsTillLost);
+      // console.log('incorrect letter');
+      // console.log(turnsTillLost);
       
     }
     console.log(JSON.stringify(alphabet));
@@ -173,9 +173,6 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
             }
           }
           playAgain();
-          
-          // alert('you win, get ready for the next round');
-          // return location.reload();
       }
       else {
         return null;
@@ -186,19 +183,3 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
    
   
 });
-
-
-
-// 2. If the user presses a key that matches the letter appears under hangman
-
-// targert answer UL
-
-
-// PUT answer into a variable
-// check to see if typed key matches and letters in answer
-
-
-
-
-// 3. If user presses wrong key then they the number of guesses remaining decreases
-// 4. If user preses the wrong key a part of the man appears under the gallow.
