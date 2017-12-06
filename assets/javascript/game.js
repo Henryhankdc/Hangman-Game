@@ -43,7 +43,10 @@ startGame();
     var correctChoices = [];
     // number of turns based on word length
     turnsTillWin = chooseWord.length;
-    turnsTillLost = chooseWord.length;
+    turnsTillLost = 0;
+    var trys = 6;
+    var trysTillWin = 0;
+    
     
 
 document.addEventListener('keyup', function(e) { //listen to the keyboard events
@@ -70,15 +73,34 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
 
     } else {
       // subtract turns
-      turnsTillLost--;
+      turnsTillLost++;
       // alert('you have ' + turns + ' left');
       console.log('incorrect letter');
+      console.log(turnsTillLost);
       
     }
     console.log(JSON.stringify(alphabet));
+
+    function stopStart() {
+      
+      if(turnsTillWin === trysTillWin ) {
+          alert('you win, get ready for the next round');
+          return location.reload();
+      }
+      else if (turnsTillLost === trys) {
+          alert('you lose. Try again');
+          return location.reload();
+      }
+      else {
+        return null;
+      }
+    
+    } 
+    stopStart();
      //show the alphabet and its actual state
   
 });
+
 
     
   
