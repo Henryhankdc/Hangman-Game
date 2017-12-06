@@ -14,11 +14,26 @@
     var answerContainer = document.getElementById('solution-container')
     var solutionContainer = document.getElementById('solution-container-words')
 
-// userTypes();
-
+    // // 1. After user presses key, the key pressed is added to a list of guesses
+      // detect key press
+    // chosen letters
+    // empty array to hold typed letters that go on screen
+    var chosenLetters = [];
+    // empty array to hold correct typed choices
+    var correctChoices = [];
+    // number of turns based on word length
+    turnsTillWin = chooseWord.length;
+    turnsTillLost = 6;
+    var trys = 6;
+    var trysTillWin = 0;
+ 
+    
 
 function startGame() {
+  
   var newList = document.createElement('ul');
+  
+
   answerContainer.appendChild(newList);
   newList.setAttribute('id', 'solution-list');  
 
@@ -29,24 +44,10 @@ function startGame() {
      newList.appendChild(solutionItem);
     
   }
-
-
 }
 startGame();
 
-// // 1. After user presses key, the key pressed is added to a list of guesses
-      // detect key press
-    // chosen letters
-    // empty array to hold typed letters that go on screen
-    var chosenLetters = [];
-    // empty array to hold correct typed choices
-    var correctChoices = [];
-    // number of turns based on word length
-    turnsTillWin = chooseWord.length;
-    turnsTillLost = 0;
-    var trys = 6;
-    var trysTillWin = 0;
-    
+
     
 
 document.addEventListener('keyup', function(e) { //listen to the keyboard events
@@ -73,18 +74,21 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
 
     } else {
       // subtract turns
-      turnsTillLost++;
-      // alert('you have ' + turns + ' left');
-        if (turnsTillLost === 1) {
+      turnsTillLost--;
+      var addTrys = document.getElementById('guesses-left');
+      addTrys.innerHTML = turnsTillLost - 1;
+
+        if (turnsTillLost === 6) {
             function addImage() {
               var addImage = document.getElementById('deadGuyContainer');
               var imageTag = document.getElementById('dead-guy')
               imageTag.setAttribute('src', 'assets/images/head.png');
               imageTag.setAttribute('alt', 'noose with head');
+              
             }
             addImage();
         }
-        else if (turnsTillLost === 2) {
+        else if (turnsTillLost === 5) {
           function addImage() {
             var addImage = document.getElementById('deadGuyContainer');
             var imageTag = document.getElementById('dead-guy')
@@ -93,7 +97,7 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
           }
           addImage();
         }
-        else if (turnsTillLost === 3) {
+        else if (turnsTillLost === 4) {
           function addImage() {
             var addImage = document.getElementById('deadGuyContainer');
             var imageTag = document.getElementById('dead-guy')
@@ -102,7 +106,7 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
           }
           addImage();
         }
-        else if (turnsTillLost === 4) {
+        else if (turnsTillLost === 3) {
           function addImage() {
             var addImage = document.getElementById('deadGuyContainer');
             var imageTag = document.getElementById('dead-guy')
@@ -111,28 +115,28 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
           }
           addImage();
         }
-        else if (turnsTillLost === 5) {
+        else if (turnsTillLost === 2) {
           function addImage() {
             var addImage = document.getElementById('deadGuyContainer');
             var imageTag = document.getElementById('dead-guy')
             imageTag.setAttribute('src', 'assets/images/head-body-arms-legs.png');
             imageTag.setAttribute('alt', 'noose with head');
+            alert('One more guess. You are totally about to kill a dude. That would be a bummer. ');
           }
           addImage();
         }
-        else if (turnsTillLost === 6) {
+        else if (turnsTillLost === 1) {
           function addImage() {
             var addImage = document.getElementById('deadGuyContainer');
             var imageTag = document.getElementById('dead-guy')
             imageTag.setAttribute('src', 'assets/images/dead.png');
             imageTag.setAttribute('alt', 'noose with head');
-            // alert('you lose. Try again');
            
           }
           addImage();
 
           function killGame() {
-            alert('you lose. Try again');
+            alert('you lose. You just killed a dude. bummer.  Try again?');
            
                 return location.reload(true);
                 
@@ -152,44 +156,37 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
     function stopStart() {
       
       if(turnsTillWin === trysTillWin ) {
-          alert('you win, get ready for the next round');
-          return location.reload();
+
+         function award() {
+            var element = document.getElementById('gifContainer');
+            element.classList.add('reveal');
+              
+          }
+          award();
+         function playAgain (){
+            var a = prompt('great work. want to play again?');
+            // prompt();
+      
+            if (a === 'yes') {
+              // console.log('great');
+              setTimeout(function(){location.reload()}, 5000);
+            }
+          }
+          playAgain();
+          
+          // alert('you win, get ready for the next round');
+          // return location.reload();
       }
-      // else if (turnsTillLost === trys) {
-      //     alert('you lose. Try again');
-      //     return location.reload();
-      // }
       else {
         return null;
       }
     
     } 
     stopStart();
-     //show the alphabet and its actual state
+   
   
 });
 
-
-    
-  
-
-
-
-// reference
-
-// for (var i = 0; i < drinkList.length; i++) {
-//   var newItem = document.createElement('li');
-//     newItem.innerHTML = drinkList[i];
-//     newList.appendChild(newItem);
-//   }
-
-// var newDiv = document.createElement("div");
-// newDiv.innerHTML = "A pleasure to meet you!";
-
-// targetDiv.appendChild(newDiv);
-
-// // We then apply that CSS to our newDiv.
-// newDiv.setAttribute("class", "fancy");
 
 
 // 2. If the user presses a key that matches the letter appears under hangman

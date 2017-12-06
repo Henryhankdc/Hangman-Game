@@ -29,8 +29,18 @@
     text-transform: uppercase;
 }
 
-#banner .container {
-    /* background-color: HSLA(236, 49%, 38%, .50); */
+.deadGuyContainer {
+    position: relative;
+}
+
+.gifContainer {
+    visibility: hidden;
+}
+
+.gifContainer.reveal {
+    visibility: visible;
+    position: absolute;
+    top: 0;
 }
 
 
