@@ -75,6 +75,74 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
       // subtract turns
       turnsTillLost++;
       // alert('you have ' + turns + ' left');
+        if (turnsTillLost === 1) {
+            function addImage() {
+              var addImage = document.getElementById('deadGuyContainer');
+              var imageTag = document.getElementById('dead-guy')
+              imageTag.setAttribute('src', 'assets/images/head.png');
+              imageTag.setAttribute('alt', 'noose with head');
+            }
+            addImage();
+        }
+        else if (turnsTillLost === 2) {
+          function addImage() {
+            var addImage = document.getElementById('deadGuyContainer');
+            var imageTag = document.getElementById('dead-guy')
+            imageTag.setAttribute('src', 'assets/images/head-body.png');
+            imageTag.setAttribute('alt', 'noose with head');
+          }
+          addImage();
+        }
+        else if (turnsTillLost === 3) {
+          function addImage() {
+            var addImage = document.getElementById('deadGuyContainer');
+            var imageTag = document.getElementById('dead-guy')
+            imageTag.setAttribute('src', 'assets/images/head-body-full.png');
+            imageTag.setAttribute('alt', 'noose with head');
+          }
+          addImage();
+        }
+        else if (turnsTillLost === 4) {
+          function addImage() {
+            var addImage = document.getElementById('deadGuyContainer');
+            var imageTag = document.getElementById('dead-guy')
+            imageTag.setAttribute('src', 'assets/images/head-body-arms.png');
+            imageTag.setAttribute('alt', 'noose with head');
+          }
+          addImage();
+        }
+        else if (turnsTillLost === 5) {
+          function addImage() {
+            var addImage = document.getElementById('deadGuyContainer');
+            var imageTag = document.getElementById('dead-guy')
+            imageTag.setAttribute('src', 'assets/images/head-body-arms-legs.png');
+            imageTag.setAttribute('alt', 'noose with head');
+          }
+          addImage();
+        }
+        else if (turnsTillLost === 6) {
+          function addImage() {
+            var addImage = document.getElementById('deadGuyContainer');
+            var imageTag = document.getElementById('dead-guy')
+            imageTag.setAttribute('src', 'assets/images/dead.png');
+            imageTag.setAttribute('alt', 'noose with head');
+            // alert('you lose. Try again');
+           
+          }
+          addImage();
+
+          function killGame() {
+            alert('you lose. Try again');
+           
+                return location.reload(true);
+                
+          }
+          killGame();
+        }
+        else {
+          return null;
+        }
+
       console.log('incorrect letter');
       console.log(turnsTillLost);
       
@@ -87,10 +155,10 @@ document.addEventListener('keyup', function(e) { //listen to the keyboard events
           alert('you win, get ready for the next round');
           return location.reload();
       }
-      else if (turnsTillLost === trys) {
-          alert('you lose. Try again');
-          return location.reload();
-      }
+      // else if (turnsTillLost === trys) {
+      //     alert('you lose. Try again');
+      //     return location.reload();
+      // }
       else {
         return null;
       }

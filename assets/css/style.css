@@ -1,5 +1,39 @@
 
 
+#banner {
+    background-image: url(../images/bill-and-ted-cover.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Titillium Web', sans-serif;
+    
+
+}
+
+#banner h1 {
+    color:#F9EB42; 
+    background-color: HSLA(236, 49%, 38%, .60);
+    text-align:center;
+    width:60%;
+}
+#banner p {
+    color:white;
+    background-color: HSLA(236, 49%, 38%, .60);
+    text-align:center;
+    width:60%;
+}
+
+
+.highlight {
+    color:#DF1D2E;
+    text-transform: uppercase;
+}
+
+#banner .container {
+    /* background-color: HSLA(236, 49%, 38%, .50); */
+}
+
+
 #solution-list {
     font-size:22px;
     font-weight: bold;
@@ -24,4 +58,8 @@
     letter-spacing:35px;
     margin-left:10px;
     padding-top:0px;
+}
+
+.letters-guessed {
+    margin-top:40px;
 }
