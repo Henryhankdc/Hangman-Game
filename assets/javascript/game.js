@@ -3,7 +3,7 @@
     // alphabet with extra letters
     var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     // answers
-    var solution = ['party', 'dude', 'excellent', 'radical', 'awesome', 'bummer'];
+    var solution = ['party', 'dude', 'excellent', 'radical', 'awesome', 'bummer', 'heinous'];
 
     // Pick random word
     var chooseWord = solution[Math.floor(Math.random() * solution.length)];
